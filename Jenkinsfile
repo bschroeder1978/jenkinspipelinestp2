@@ -2,7 +2,7 @@ pipeline {
     agent any 
     environment { 
         APP_NAME = 'my-app' 
-        DOCKER_USER = 'bsc-docker-username'
+        DOCKER_USER = 'bschroeder1978'
     }
     stages {
         stage('Login Docker') {

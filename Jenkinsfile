@@ -59,6 +59,29 @@ pipeline {
                     }
                 }
             }
+        }
+        stage('Failed Build') {
+            steps {
+                script {
+                    try {
+                        echo "Compil en cours..."
+                        sh 'exit 1'
+                    } catch {
+                        echo "Exception caught"
+                        currentBuild.result = 'FAILURE'
+                    }
+                }
+            }
         } 
+        post {
+            failure {
+                echo "Pipeline Failed"
+                sh 'echo "Pipeline failed" > error.log'
+                archiveArtifacts artifacts: 'error.log', fingerprint: true
+            }
+            success {
+                echo "Pipeline succeeded"
+            }
+        }
     } 
 }

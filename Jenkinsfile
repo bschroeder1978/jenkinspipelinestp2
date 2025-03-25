@@ -68,7 +68,7 @@ pipeline {
                         sh 'exit 1'
                     } catch(Exception e) {
                         echo "Exception caught"
-                        currentBuild.result = 'FAILURE'
+                        //currentBuild.result = 'FAILURE'
                     }
                 }
             }

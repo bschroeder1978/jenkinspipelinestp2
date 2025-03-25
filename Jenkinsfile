@@ -66,7 +66,7 @@ pipeline {
                     try {
                         echo "Compil en cours..."
                         sh 'exit 1'
-                    } catch {
+                    } catch(Exception e) {
                         echo "Exception caught"
                         currentBuild.result = 'FAILURE'
                     }

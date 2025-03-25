@@ -73,15 +73,16 @@ pipeline {
                 }
             }
         } 
-        post {
-            failure {
-                echo "Pipeline Failed"
-                sh 'echo "Pipeline failed" > error.log'
-                archiveArtifacts artifacts: 'error.log', fingerprint: true
-            }
-            success {
-                echo "Pipeline succeeded"
-            }
+    }
+    post {
+        failure {
+            echo "Pipeline Failed"
+            sh 'echo "Pipeline failed" > error.log'
+            archiveArtifacts artifacts: 'error.log', fingerprint: true
         }
-    } 
+        success {
+            echo "Pipeline succeeded"
+        }
+    }
+     
 }
